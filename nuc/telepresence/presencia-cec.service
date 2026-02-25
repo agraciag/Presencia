@@ -1,0 +1,16 @@
+# Presencia - HDMI-CEC TV power on at boot
+# Turns the TV on and switches to NUC input when the system starts.
+# Installed to: ~/.config/systemd/user/presencia-cec.service
+[Unit]
+Description=Presencia CEC TV Power On
+After=graphical-session.target
+Before=presencia-kiosk.service
+
+[Service]
+Type=oneshot
+ExecStart=/opt/presencia/telepresence/presencia-cec.sh on
+RemainAfterExit=yes
+ExecStop=/opt/presencia/telepresence/presencia-cec.sh off
+
+[Install]
+WantedBy=default.target

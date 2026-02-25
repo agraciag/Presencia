@@ -1,0 +1,51 @@
+# Presencia - Central Configuration
+# Copy to presencia.conf and fill in your values.
+
+# ─── Jitsi Server ───────────────────────────────────────────────
+JITSI_DOMAIN="meet.example.com"
+JITSI_ROOM="familia"
+JITSI_URL="https://${JITSI_DOMAIN}/${JITSI_ROOM}"
+
+# Display name shown in Jitsi for this endpoint
+JITSI_DISPLAY_NAME="Casa México"
+
+# ─── Network ────────────────────────────────────────────────────
+# Tailscale IP of the NUC (filled after Tailscale setup)
+TAILSCALE_IP=""
+
+# ─── Tasmota Smart Plug ────────────────────────────────────────
+# IP address of the Tasmota smart plug (on Tailscale or local network)
+TASMOTA_IP="192.168.1.100"
+
+# ─── Telegram Notifications ────────────────────────────────────
+TELEGRAM_BOT_TOKEN=""
+TELEGRAM_CHAT_ID=""
+
+# ─── Modes ──────────────────────────────────────────────────────
+# Default mode on boot: telepresence | media
+DEFAULT_MODE="telepresence"
+
+# Mode switch schedule (cron expressions, Mexico City time)
+# Friday 18:00 → media mode
+MODE_MEDIA_CRON="0 18 * * 5"
+# Sunday 21:00 → telepresence mode
+MODE_TELEPRESENCE_CRON="0 21 * * 0"
+
+# ─── Watchdog ───────────────────────────────────────────────────
+# Interval between health checks (seconds)
+WATCHDOG_INTERVAL=120
+
+# Hours between preventive Chromium refreshes
+WATCHDOG_REFRESH_HOURS=6
+
+# ─── Hardware ───────────────────────────────────────────────────
+# HDMI-CEC device (auto-detected if empty)
+CEC_DEVICE=""
+
+# Audio output device (use 'aplay -l' to find, leave empty for default)
+AUDIO_DEVICE=""
+
+# ─── Paths (don't change unless you know what you're doing) ────
+PRESENCIA_STATE_DIR="/var/lib/presencia"
+PRESENCIA_LOG_DIR="/var/log/presencia"
+PRESENCIA_INSTALL_DIR="/opt/presencia"

@@ -1,0 +1,24 @@
+# Presencia - Chromium Kiosk systemd user service
+# Installed to: ~/.config/systemd/user/presencia-kiosk.service
+[Unit]
+Description=Presencia Chromium Kiosk
+After=graphical-session.target
+Wants=graphical-session.target
+
+[Service]
+Type=simple
+Environment=DISPLAY=:0
+ExecStart=/opt/presencia/telepresence/presencia-kiosk.sh
+Restart=always
+RestartSec=5
+
+# Memory limit to prevent Chromium leaks from exhausting system
+MemoryMax=2G
+MemoryHigh=1536M
+
+# Logging
+StandardOutput=append:/var/log/presencia/kiosk.log
+StandardError=append:/var/log/presencia/kiosk.log
+
+[Install]
+WantedBy=default.target

@@ -1,0 +1,9 @@
+# Presencia - Automatic mode switching schedule
+# Installed to: /etc/cron.d/presencia-mode
+# All times in Mexico City timezone (set in setup-base.sh)
+
+# Friday 18:00 → Media mode (Kodi for the weekend)
+0 18 * * 5  root  /opt/presencia/media/presencia-mode-switch.sh media >> /var/log/presencia/mode-cron.log 2>&1
+
+# Sunday 21:00 → Telepresence mode (back to Jitsi)
+0 21 * * 0  root  /opt/presencia/media/presencia-mode-switch.sh telepresence >> /var/log/presencia/mode-cron.log 2>&1

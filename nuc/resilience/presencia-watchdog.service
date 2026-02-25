@@ -1,0 +1,8 @@
+[Unit]
+Description=Presencia Watchdog Health Check
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+ExecStart=/opt/presencia/resilience/presencia-watchdog.sh

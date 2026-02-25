@@ -1,0 +1,15 @@
+[Unit]
+Description=Presencia Kodi Media Center
+After=graphical-session.target
+Conflicts=presencia-kiosk.service
+
+[Service]
+Type=simple
+User=presencia
+Environment=DISPLAY=:0
+ExecStart=/usr/bin/kodi --standalone
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target
